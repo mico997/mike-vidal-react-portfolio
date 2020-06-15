@@ -13,7 +13,7 @@ export default class App extends Component {
     const data =["Quip", "Eventbrite", "Ministry Safe", "Swing life"];
 
     return data.map(item => {
-      return <h1>{item}</h1>;
+      return <PortfolioItem />;
     })
 
   }
