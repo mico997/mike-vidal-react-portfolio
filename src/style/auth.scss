@@ -1,4 +1,20 @@
-.left-column {
-    height: 200px;
-    width: 100%
-};
+.auth-page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 84px);
+
+    .left-column {
+        background-size: cover;
+    }
+
+    .right-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $offwhite;
+    }
+}
+
+
+
+

@@ -1,13 +1,25 @@
 import React, { Component} from 'react'
 import loginImg from "../../../static/assets/images/auth/login.jpg";
+import Login from '../auth/login';
 
 export default class  extends Component {
    constructor(props) {
-        super(props)
+        super(props);
 
-         this.state = {
+        this.state = {
               
-          }
+        }
+        this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this)
+        this.handleUnsuccesfulAuth = this.handleUnsuccesfulAuth.bind(this)
+   }
+
+   handleSuccesfulAuth() {
+       this.props.handleSuccesfulLogin();
+       this.props.history.push("/");
+   }
+
+   handleUnsuccesfulAuth() {
+       this.props.handleUnsuccesfulLogin();
    }
 
    render() {
@@ -21,9 +33,14 @@ export default class  extends Component {
                     
                 />
                <div className="right-column">
+               <Login 
+                handleSuccesfulAuth={this.handleSuccesfulAuth}
+                handleUnsuccesfulAuth={this.handleUnsuccesfulAuth}
+               
+               />   
 
-               </div>
-               <hi>Login Component goes here...</hi>
+
+                </div>
            </div>
        )
    }
