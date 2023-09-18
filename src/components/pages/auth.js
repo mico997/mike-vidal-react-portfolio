@@ -2,13 +2,11 @@ import React, { Component} from 'react'
 import loginImg from "../../../static/assets/images/auth/login.jpg";
 import Login from '../auth/login';
 
-export default class  extends Component {
+export default class Auth  extends Component {
    constructor(props) {
         super(props);
 
-        this.state = {
-              
-        }
+        
         this.handleSuccesfulAuth = this.handleSuccesfulAuth.bind(this)
         this.handleUnsuccesfulAuth = this.handleUnsuccesfulAuth.bind(this)
    }
