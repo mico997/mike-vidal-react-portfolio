@@ -10,14 +10,13 @@ import Blog from './pages/blog'
 import PortfolioDetail from './portfolio/portfolio-detail'
 import Auth from './pages/auth'
 import NoMatch from './pages/No-Match'
-import Login from './auth/login'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      loggedInStatus: 'NOT_LOGGED_IN',
+      loggedInStatus: 'NOT_LOGGED_IN'
     }
 
     this.handleSuccesfulLogin = this.handleSuccesfulLogin.bind(this)
@@ -27,20 +26,20 @@ export default class App extends Component {
 
   handleSuccesfulLogin() {
     this.setState({
-      loggedInStatus: 'LOGGED_IN',
+      loggedInStatus: 'LOGGED_IN'
     })
   }
 
   handleUnsuccesfulLogin() {
     this.setState({
-      loggedInStatus: 'NOT_LOGGED_IN',
+      loggedInStatus: 'NOT_LOGGED_IN'
     })
   }
 
   checkLoginStatus() {
     return axios
       .get('https://api.devcamp.space/logged_in', {
-        withCredentials: true,
+        withCredentials: true
       })
       .then((response) => {
         const loggedIn = response.data.logged_in
@@ -54,11 +53,11 @@ export default class App extends Component {
           return loggedIn
         } else if (loggedIn && loggedInStatus === 'NOT_LOGGED_IN') {
           this.setState({
-            loggedInStatus: 'LOGGED_IN',
+            loggedInStatus: 'LOGGED_IN'
           })
         } else if (!loggedIn && loggedInStatus === 'LOGGED_IN') {
           this.setState({
-            loggedInStatus: 'NOT_LOGGED_IN',
+            loggedInStatus: 'NOT_LOGGED_IN'
           })
         }
       })
