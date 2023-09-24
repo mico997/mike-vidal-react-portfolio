@@ -1,6 +1,5 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import Login from '../auth/login'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const NavigationContainer = (props) => {
   const dynamicLink = () => {
@@ -11,9 +10,8 @@ const NavigationContainer = (props) => {
         </NavLink>
         {false ? <button>Add Blog</button> : null}
       </div>
-
-    )
-  }
+    );
+  };
 
   return (
     <div className="nav-wrapper">
@@ -34,25 +32,21 @@ const NavigationContainer = (props) => {
           </NavLink>
         </div>
 
-        {
-          props.loggedInStatus === 'LOGGED_IN'
-            ? (
-              dynamicLink('/blog', 'Blog')
-            )
-            : null
-        }
+        {props.loggedInStatus === "LOGGED_IN"
+          ? dynamicLink("/blog", "Blog")
+          : null}
       </div>
 
       <div className="right-side">
-        <div className='nav-link-wrapper'>
-          <NavLink to='../auth/login' activeClassName='nav-link-active'>
+        <div className="nav-link-wrapper">
+          <NavLink to="/login" activeClassName="nav-link-active">
             Login
           </NavLink>
         </div>
         Mike Vidal
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavigationContainer
+export default NavigationContainer;
