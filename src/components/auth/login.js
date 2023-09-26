@@ -1,58 +1,58 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      email: '',
-      password: '',
-      errorText: '',
-    }
+      email: "",
+      password: "",
+      errorText: "",
+    };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
-      errorText: '',
-    })
+      errorText: "",
+    });
   }
 
   handleSubmit(event) {
     axios
       .post(
-        'https://api.devcamp.space/sessions',
+        "https://api.devcamp.space/sessions",
         {
           client: {
             email: this.state.email,
             password: this.state.password,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
       .then((response) => {
-        if (response.data.status === 'created') {
-          this.props.handleSuccesfulAuth()
+        if (response.data.status === "created") {
+          // console.log("You can come in...");
+          this.props.handleSuccesfulAuth();
         } else {
           this.setState({
-            errorText: 'Wrong Email Or Password',
-          })
-          this.props.handleUnsuccesfulAuth()
+            errorText: "Wrong Email Or Password",
+          });
+          this.props.handleUnsuccesfulAuth();
         }
       })
       .catch((error) => {
         this.setState({
-          errorText: 'An Error Occured',
-        })
-        this.props.handleUnsuccesfulAuth()
-      })
+          errorText: "An Error Occured",
+        });
+        this.props.handleUnsuccesfulAuth();
+      });
 
-    event.preventDefault()
+    event.preventDefault();
   }
 
   render() {
@@ -84,6 +84,6 @@ export default class Login extends Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }

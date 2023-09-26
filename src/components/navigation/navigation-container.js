@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavigationContainer = (props) => {
-  const dynamicLink = () => {
+const NavigationComponent = (props) => {
+  const dynamicLink = (route, linkText) => {
     return (
       <div className="nav-link-wrapper">
         <NavLink to="/blog" activeClassName="nav-link-active">
@@ -39,7 +39,7 @@ const NavigationContainer = (props) => {
 
       <div className="right-side">
         <div className="nav-link-wrapper">
-          <NavLink to="/login" activeClassName="nav-link-active">
+          <NavLink to="/auth" activeClassName="nav-link-active">
             Login
           </NavLink>
         </div>
@@ -49,4 +49,4 @@ const NavigationContainer = (props) => {
   );
 };
 
-export default NavigationContainer;
+export default NavigationComponent;
