@@ -7,8 +7,8 @@ const NavigationComponent = (props) => {
   const dynamicLink = (route, linkText) => {
     return (
       <div className="nav-link-wrapper">
-        <NavLink to="/blog" activeClassName="nav-link-active">
-          Blog
+        <NavLink to={route} activeClassName="nav-link-active">
+          {linkText}
         </NavLink>
         {false ? <button>Add Blog</button> : null}
       </div>
@@ -45,27 +45,28 @@ const NavigationComponent = (props) => {
         </div>
         <div className="nav-link-wrapper">
           <NavLink to="/contact" activeClassName="nav-link-active">
-            Contact~
+            Contact
+          </NavLink>
+        </div>
+
+        <div className="nav-link-wrapper">
+          <NavLink to="/blog" activeClassName="nav-link-active">
+            Blog
           </NavLink>
         </div>
 
         {props.loggedInStatus === "LOGGED_IN"
-          ? dynamicLink("/blog", "Blog")
+          ? dynamicLink("/portfolio-manager", "Portfolio Manager")
           : null}
       </div>
 
       <div className="right-side">
         <div className="nav-link-wrapper">
-          <NavLink to="/auth" activeClassName="nav-link-active">
-            Login
-          </NavLink>
-        </div>
-        <div className="nav-link-wrapper">
+          Mike Vidal
           {props.loggedInStatus === "LOGGED_IN" ? (
             <a onClick={handleSignOut}>Sign Out</a>
           ) : null}
         </div>
-        Mike Vidal
       </div>
     </div>
   );
