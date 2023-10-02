@@ -29,12 +29,12 @@ export default class PortfolioContainer extends Component {
       .get("https://mikekwekam.devcamp.space/portfolio/portfolio_items")
       .then((response) => {
         // handle success
-        console.log("response data", response);
+        //console.log("response data", response);
         this.setState({
           data: response.data.portfolio_items,
         });
       })
-      .catch((response) => {
+      .catch((error) => {
         // handle error
         console.log(error);
       });
@@ -62,15 +62,12 @@ export default class PortfolioContainer extends Component {
         </button>
         <button
           className="btn"
-          onClick={() => this.handleFilter("SocialMedia")}
+          onClick={() => this.handleFilter("social media")}
         >
           Social Media
         </button>
-        <button
-          className="btn"
-          onClick={() => this.handleFilter("SearchEngine")}
-        >
-          Search Engine
+        <button className="btn" onClick={() => this.handleFilter("ecommerce")}>
+          eCommerce
         </button>
         {this.portfolioItems()}
       </div>
