@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import BlogItem from "../blog/blog.item";
+import BlogItem from "../blog/blog-item";
 
 class Blog extends Component {
   constructor() {
@@ -9,12 +9,38 @@ class Blog extends Component {
 
     this.state = {
       blogItems: [],
+      totalCount: 0,
+      currentPage: 0,
+      isLoading: true,
     };
 
     this.getBlogItems = this.getBlogItems.bind(this);
+    this.activateInfiniteScroll();
+  }
+
+  activateInfiniteScroll() {
+    window.onscroll = () => {
+      // console.log("window.innerHeight");
+      // console.log("document.documentElement.scrollTop");
+      // console.log(
+      //   "document.documentElement.offsetHeight",
+      //   document.documentElement.offsetHeight
+      // );
+
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 0.5 ===
+        document.documentElement.offsetHeight
+      ) {
+        console.log("get more post");
+      }
+    };
   }
 
   getBlogItems() {
+    this.setState({
+      currentPage: this.state.currentPage + 1,
+    });
+
     axios
       .get("https://mikevidal.devcamp.space/portfolio/portfolio_blogs", {
         withCredentials: true,
@@ -22,6 +48,7 @@ class Blog extends Component {
       .then((response) => {
         this.setState({
           blogItems: response.data.portfolio_blogs,
+          totalCount: response.data.meta.total_records,
         });
       })
       .catch((error) => {
@@ -37,7 +64,12 @@ class Blog extends Component {
     const blogRecords = this.state.blogItems.map((blogItem) => {
       return <BlogItem key={blogItem.id} blogItem={blogItem} />;
     });
-    return <div>{blogRecords}</div>;
+
+    return (
+      <div className="blog-container">
+        <div className="content-container">{blogRecords}</div>
+      </div>
+    );
   }
 }
 
