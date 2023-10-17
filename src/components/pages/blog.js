@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import BlogItem from "../blog/blog-item";
+import BlogModal from "../modals/blog-modal";
 
 class Blog extends Component {
   constructor() {
@@ -13,11 +14,26 @@ class Blog extends Component {
       totalCount: 0,
       currentPage: 0,
       isLoading: true,
+      blogModalIsOpen: false,
     };
 
     this.getBlogItems = this.getBlogItems.bind(this);
     this.onScroll = this.onScroll.bind(this);
     window.addEventListener("scroll", this.onScroll, false);
+    this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
+  }
+
+  handleModalClose() {
+    this.setState({
+      blogModalIsOpen: false,
+    });
+  }
+
+  handleNewBlogClick() {
+    this.setState({
+      blogModalIsOpen: true,
+    });
   }
 
   onScroll() {
@@ -76,8 +92,16 @@ class Blog extends Component {
 
     return (
       <div className="blog-container">
-        <div className="content-container">{blogRecords}</div>
+        <BlogModal
+          handleModalClose={this.handleModalClose}
+          modalIsOpen={this.state.blogModalIsOpen}
+        />
 
+        <div className="new-blog-link">
+          <a onClick={this.handleNewBlogClick}>Open Modal</a>
+        </div>
+
+        <div className="content-container">{blogRecords}</div>
         {this.state.isLoading ? (
           <div className="content-loader">
             <FontAwesomeIcon icon="spinner" spin />
