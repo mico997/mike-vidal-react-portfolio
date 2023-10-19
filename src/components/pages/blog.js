@@ -22,6 +22,15 @@ class Blog extends Component {
     window.addEventListener("scroll", this.onScroll, false);
     this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
+    this.handleSuccessfullNewBlogSubmission =
+      this.handleSuccessfullNewBlogSubmission.bind(this);
+  }
+
+  handleSuccessfullNewBlogSubmission(blog) {
+    this.setState({
+      blogModalIsOpen: false,
+      blogItems: [blog].concat(this.state.blogItems),
+    });
   }
 
   handleModalClose() {
@@ -59,7 +68,7 @@ class Blog extends Component {
 
     axios
       .get(
-        `https://mikevidal.devcamp.space/portfolio/portfolio_blogs?page=${this.state.currentPage}`,
+        `https://mikekwekam.devcamp.space/portfolio/portfolio_blogs?page=${this.state.currentPage}`,
         {
           withCredentials: true,
         }
@@ -93,12 +102,17 @@ class Blog extends Component {
     return (
       <div className="blog-container">
         <BlogModal
+          handleSuccessfullNewBlogSubmission={
+            this.handleSuccessfullNewBlogSubmission
+          }
           handleModalClose={this.handleModalClose}
           modalIsOpen={this.state.blogModalIsOpen}
         />
 
         <div className="new-blog-link">
-          <a onClick={this.handleNewBlogClick}>Open Modal</a>
+          <a onClick={this.handleNewBlogClick}>
+            <FontAwesomeIcon icon="circle-plus" />
+          </a>
         </div>
 
         <div className="content-container">{blogRecords}</div>
