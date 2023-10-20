@@ -74,7 +74,7 @@ class Blog extends Component {
         }
       )
       .then((response) => {
-        console.log("getting", response);
+        console.log("getting", response.data);
         this.setState({
           blogItems: this.state.blogItems.concat(response.data.portfolio_blogs),
           totalCount: response.data.meta.total_records,
@@ -86,7 +86,7 @@ class Blog extends Component {
       });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getBlogItems();
   }
 
@@ -109,13 +109,16 @@ class Blog extends Component {
           modalIsOpen={this.state.blogModalIsOpen}
         />
 
-        <div className="new-blog-link">
-          <a onClick={this.handleNewBlogClick}>
-            <FontAwesomeIcon icon="circle-plus" />
-          </a>
-        </div>
+        {this.props.loggedInStatus === "LOGGED_IN" ? (
+          <div className="new-blog-link">
+            <a onClick={this.handleNewBlogClick}>
+              <FontAwesomeIcon icon="circle-plus" />
+            </a>
+          </div>
+        ) : null}
 
         <div className="content-container">{blogRecords}</div>
+
         {this.state.isLoading ? (
           <div className="content-loader">
             <FontAwesomeIcon icon="spinner" spin />
