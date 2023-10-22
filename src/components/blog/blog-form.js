@@ -49,12 +49,13 @@ export default class BlogForm extends Component {
 
   componentDidMount() {
     if (this.props.editMode) {
+      const { id, title, blog_status, content } = this.props.blog;
       this.setState({
-        id: this.props.blog.id,
-        title: this.props.blog.title,
-        blog_status: this.props.blog.blog_status,
-        content: this.props.blog.content,
-        apiUrl: `https://mikekwekam.devcamp.space/portfolio/portfolio_blogs/${this.props.blog.id}`,
+        id: id,
+        title: title,
+        blog_status: blog_status,
+        content: content,
+        apiUrl: `https://mikekwekam.devcamp.space/portfolio/portfolio_blogs/${id}`,
         apiAction: "patch",
       });
     }
