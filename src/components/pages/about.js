@@ -13,25 +13,17 @@ export default function () {
         }}
       />
       <div className="right-column">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit illo
-        omnis accusamus. Vel numquam cumque repellendus qui consequatur, fugiat
-        iusto nam dolore quia adipisci placeat sint dolorum. Adipisci, vero
-        odio? Ad labore inventore architecto. Nam sit illo iste sint asperiores
-        in tenetur mollitia commodi nesciunt, consectetur nulla ullam minus sunt
-        temporibus architecto. Mollitia voluptates, nobis incidunt iste et quas
-        dolore? Quibusdam rem at minus consectetur possimus. Eligendi maxime
-        ullam aliquam, maiores distinctio nam hic cumque optio? Labore officia
-        ad aut reiciendis velit amet dolorem in perspiciatis? Harum obcaecati
-        nobis fugiat. Quae labore similique adipisci eum praesentium eligendi
-        recusandae quisquam ea dignissimos iusto veniam aspernatur aperiam
-        perspiciatis sapiente, quibusdam autem libero eos iure debitis
-        exercitationem laboriosam suscipit et corrupti perferendis! Impedit.
-        Doloribus voluptatibus dicta quam nesciunt ex corrupti vero nam, culpa
-        molestiae distinctio. Magni tempore, delectus deserunt natus sunt sed,
-        nihil eum expedita error iure unde architecto accusamus quas fugiat
-        reiciendis. Sit, enim expedita consequatur ab temporibus magnam
-        voluptates qui id quae iure totam quasi reprehenderit laboriosam iste
-        esse dolores nobis libero voluptate eius quia debitis tempora nihil
+        Introducing a skilled Full Stack Developer with a strong focus on the
+        MERN stack, where proficiency in ReactJS stands as a hallmark of
+        expertise. I possesses a deep understanding of both front-end and
+        back-end technologies, with an emphasis on creating dynamic and
+        responsive user interfaces using ReactJS. With a proven track record of
+        building web applications that seamlessly blend aesthetics and
+        functionality. I am poised to drive innovation and excellence in the
+        ever-evolving world of web development. Whether it's crafting
+        captivating user experiences or architecting robust server-side
+        solutions. I consider myself to be a catalyst for turning ambitious
+        digital visions into reality.
       </div>
     </div>
   );
